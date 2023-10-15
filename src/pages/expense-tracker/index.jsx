@@ -49,16 +49,16 @@ export const ExpenseTracker = () => {
           <h1> {name}'s Expense Tracker</h1>
           <div className="balance">
             <h3> Your Balance</h3>
-            {balance >= 0 ? <h2> ${balance}</h2> : <h2> -${balance * -1}</h2>}
+            {balance >= 0 ? <h2> ₹{balance}</h2> : <h2> -₹{balance * -1}</h2>}
           </div>
           <div className="summary">
             <div className="income">
               <h4> Income</h4>
-              <p>${income}</p>
+              <p>₹{income}</p>
             </div>
             <div className="expenses">
               <h4> Expenses</h4>
-              <p>${expenses}</p>
+              <p>₹{expenses}</p>
             </div>
           </div>
           <form className="add-transaction" onSubmit={onSubmit}>
@@ -99,7 +99,11 @@ export const ExpenseTracker = () => {
         {profilePhoto && (
           <div className="profile">
             {" "}
-            <img className="profile-photo" src={profilePhoto} />
+            <img
+              className="profile-photo"
+              src={profilePhoto}
+              alt="Profile pic"
+            />
             <button className="sign-out-button" onClick={signUserOut}>
               Sign Out
             </button>
@@ -116,7 +120,7 @@ export const ExpenseTracker = () => {
               <li>
                 <h4> {description} </h4>
                 <p>
-                  ${transactionAmount} •{" "}
+                  ₹{transactionAmount} •{" "}
                   <label
                     style={{
                       color: transactionType === "expense" ? "red" : "green",
